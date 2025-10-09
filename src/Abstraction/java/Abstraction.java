@@ -11,9 +11,6 @@ public class Abstraction {
 			r1.show();
 			
 			System.out.println("------------------------------------------------");
-			//Runtime Polymorphism / Dynamic binding / late binding
-			//Ex: Method Overriding
-			
 			Shape shape;
 			shape=new Square(12.5f);
 			
