@@ -1,0 +1,175 @@
+
+<div>
+  <div style="height: 200vh;">
+    <div>
+      <div class="shadow w-50 p-5 position-absolute top-100 start-50 translate-middle">
+        <form #mallAdminForm="ngForm" (ngSubmit)="registerMallAdmin(mallAdminForm)">
+          <h4 class="display-6 text-center py-2">Mall Admin Details</h4>
+
+          <div>
+            <label for="username">Username</label>
+            <div>
+              <input id="username" required #username="ngModel" ngModel name="username" type="text"
+                class="form-control" placeholder="Enter username">
+              <div *ngIf="username.invalid && username.touched">
+                <small class="text-danger" *ngIf="username.errors?.['required']">Required</small>
+              </div>
+            </div>
+          </div><br>
+
+          <div>
+            <label for="password">Password</label>
+            <div>
+              <input id="password" required #password="ngModel" ngModel name="password" type="password"
+                class="form-control" placeholder="Enter password">
+              <div *ngIf="password.invalid && password.touched">
+                <small class="text-danger" *ngIf="password.errors?.['required']">Required</small>
+              </div>
+            </div>
+          </div><br>
+
+          <div>
+            <label for="email">Email</label>
+            <div>
+              <input id="email" required #email="ngModel" ngModel name="email" type="email"
+                class="form-control" placeholder="Enter email">
+              <div *ngIf="email.invalid && email.touched">
+                <small class="text-danger" *ngIf="email.errors?.['required']">Required</small>
+              </div>
+            </div>
+          </div><br>
+
+          <div>
+            <label for="loginAttempts">Login Attempts</label>
+            <div>
+              <input id="loginAttempts" required #loginAttempts="ngModel" ngModel name="loginAttempts" type="number"
+                class="form-control" placeholder="Enter login attempts">
+              <div *ngIf="loginAttempts.invalid && loginAttempts.touched">
+                <small class="text-danger" *ngIf="loginAttempts.errors?.['required']">Required</small>
+              </div>
+            </div>
+          </div><br>
+
+          <div>
+            <label for="isActive">Is Active</label>
+            <div>
+              <select id="isActive" required #isActive="ngModel" ngModel name="isActive" class="form-control">
+                <option [ngValue]="true">Active</option>
+                <option [ngValue]="false">Inactive</option>
+              </select>
+              <div *ngIf="isActive.invalid && isActive.touched">
+                <small class="text-danger" *ngIf="isActive.errors?.['required']">Required</small>
+              </div>
+            </div>
+          </div><br>
+
+          <div>
+            <label for="lastLoginTime">Last Login Time</label>
+            <div>
+              <input id="lastLoginTime" #lastLoginTime="ngModel" ngModel name="mallAdminToUpdate.lastLoginTime" type="datetime-local"
+                class="form-control" placeholder="Enter last login time">
+              <div *ngIf="lastLoginTime.invalid && lastLoginTime.touched">
+                <small class="text-danger" *ngIf="lastLoginTime.errors?.['required']">Required</small>
+              </div>
+            </div>
+          </div><br>
+          
+
+          <div class="form-group text-center">
+            <input class="btn btn-primary" type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><br>
+
+  <div class="mt-10">
+    <div *ngIf="mallAdmins.length === 0">No mall admins available.</div>
+
+    <div *ngIf="mallAdmins.length > 0">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th> Mall Admin ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Login Attempts</th>
+            <th>Is Active</th>
+            <th>Last Login Time</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let admin of mallAdmins">
+            <td>{{ admin.mallAdminId }}</td>
+            <td>{{ admin.username }}</td>
+            <td>{{ admin.password }}</td>
+            <td>{{ admin.email }}</td>
+            <td>{{ admin.loginAttempts }}</td>
+            <td>{{ admin.isActive ? 'Yes' : 'No' }}</td>
+            <td>{{ admin.lastLoginTime | date: 'yyyy-MM-dd' }}</td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="editMallAdmin(admin)">Edit</button>
+            </td>
+            <td>
+              <button *ngIf="admin.mallAdminId !== null" class="btn btn-danger" (click)="deleteMallAdmin(admin.mallAdminId!)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+
+ 
+
+  <!-- Modal for Editing -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Update Mall Admin</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #updateForm="ngForm" (ngSubmit)="updateMallAdmin()">
+            <div>
+              <label for="edit-username">Username</label>
+              <input id="edit-username" [(ngModel)]="mallAdminToUpdate.username" name="username" type="text" class="form-control" placeholder="Username">
+            </div>
+
+            <div>
+              <label for="edit-password">Password</label>
+              <input id="edit-password" [(ngModel)]="mallAdminToUpdate.password" name="password" type="password" class="form-control" placeholder="Password">
+            </div>
+
+            <div>
+              <label for="edit-email">Email</label>
+              <input id="edit-email" [(ngModel)]="mallAdminToUpdate.email" name="email" type="email" class="form-control" placeholder="Email">
+            </div>
+
+            <div>
+              <label for="edit-loginAttempts">Login Attempts</label>
+              <input id="edit-loginAttempts" [(ngModel)]="mallAdminToUpdate.loginAttempts" name="loginAttempts" type="number" class="form-control" placeholder="Login Attempts">
+            </div>
+            <div>
+              <label for="edit-isActive">Active</label>
+              <select id="edit-isActive" [(ngModel)]="mallAdminToUpdate.isActive" name="isActive" class="form-control">
+                <option [ngValue]="true">Active</option>
+                <option [ngValue]="false">Inactive</option>
+              </select>
+            </div>
+            <div>
+              <label for="edit-lastLoginTime">Last Login Time</label>
+              <input id="edit-lastLoginTime" [(ngModel)]="mallAdminToUpdate.lastLoginTime" name="lastLoginTime" type="datetime-local" class="form-control" placeholder="Last Login Time">
+            </div>
+            <button type="submit" class="btn btn-success">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
