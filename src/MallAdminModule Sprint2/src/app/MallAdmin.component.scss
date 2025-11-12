@@ -1,0 +1,204 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+/* Compact Form Styling */
+form {
+  background-color: #000000;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form h4 {
+  margin-bottom: 15px;
+  text-align: center;
+  background: linear-gradient(90deg, rgb(148, 98, 229), rgb(222, 69, 69)); /* Gradient header */
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(243, 235, 235);
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+label {
+  font-size: 14px;
+  color: #100e0e;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #331386;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+input:focus, select:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+button.submit-btn {
+  background: linear-gradient(90deg, rgb(148, 98, 229), rgba(222, 69, 69)); /* Blue-Teal Gradient */
+  color: white;
+}
+
+button.submit-btn:hover {
+  background: linear-gradient(90deg, rgb(148, 98, 229), rgb(222, 69, 69)); /* Hover Effect */
+}
+
+button.edit-btn {
+  background: linear-gradient(90deg, rgba(255, 159, 64, 1), rgba(255, 87, 34, 1)); /* Orange Gradient */
+  color: white;
+}
+
+button.edit-btn:hover {
+  background: linear-gradient(90deg, rgba(255, 87, 34, 1), rgba(255, 159, 64, 1)); /* Hover Effect */
+}
+
+button.delete-btn {
+  background: linear-gradient(90deg, rgb(218, 198, 82), rgba(255, 77, 70, 1)); /* Red Gradient */
+  color: white;
+}
+
+button.delete-btn:hover {
+  background: linear-gradient(90deg, rgba(255, 77, 70, 1), rgba(220, 53, 69, 1)); /* Hover Effect */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-danger {
+  color: red;
+}
+
+.alert {
+  background-color: #111010;
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #111010;
+}
+
+table th {
+  background: linear-gradient(90deg, rgb(81, 8, 229), rgb(69, 13, 222)); /* Gradient header */
+  color: rgb(0, 0, 0);
+}
+
+table tr:hover {
+  background-color: #000000;
+}
+
+.table-bordered {
+  border: 1px solid #000000;
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #000000;
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  background: linear-gradient(90deg, rgba(58, 123, 213, 1), rgb(164, 138, 162)); /* Gradient Header */
+  color: rgb(16, 8, 8);
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.modal-title {
+  font-size: 20px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 10px;
+  text-align: right;
+}
+
+.modal-footer button {
+  background: linear-gradient(90deg, rgba(58, 123, 213, 1), rgb(42, 99, 150)); /* Gradient Green */
+  color: white;
+}
+
+.modal-footer button.cancel {
+  background: linear-gradient(90deg, rgba(220, 53, 69, 1), rgba(255, 77, 70, 1)); /* Red Gradient */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  form {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .table th, .table td {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .table th, .table td {
+    font-size: 10px;
+  }
+}
